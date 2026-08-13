@@ -6,6 +6,7 @@ import {
     SEARCH_PRODUCTS_QUERY,
     GET_CATEGORIES_QUERY,
     GET_BRANDS_QUERY,
+    GET_PRODUCTS_BY_CATEGORY_QUERY,
 } from "../queries/product.queries";
 
 import {
@@ -32,16 +33,28 @@ function toNumber(value: unknown): number {
 }
 
 export async function getProducts(
-    limit = 20,
+    limit = 50,
+    category?: string
 ): Promise<ProductSummary[]> {
     const session = driver.session();
 
     try {
-        const result = await session.run(
-            GET_PRODUCTS_QUERY,
-            {
+        const query = category
+            ? GET_PRODUCTS_BY_CATEGORY_QUERY
+            : GET_PRODUCTS_QUERY;
+
+        const params = category
+            ? {
                 limit,
+                category,
             }
+            : {
+                limit,
+            };
+
+        const result = await session.run(
+            query,
+            params
         );
 
         return result.records.map((record) => ({

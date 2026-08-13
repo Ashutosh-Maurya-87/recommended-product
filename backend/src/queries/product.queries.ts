@@ -11,6 +11,22 @@ export const GET_PRODUCTS_QUERY = `
   LIMIT $limit
 `;
 
+export const GET_PRODUCTS_BY_CATEGORY_QUERY = `
+  MATCH (p:Product)-[:BELONGS_TO]->(c:Category)
+
+  WHERE toLower(c.name) = toLower($category)
+
+  RETURN
+    p.id AS id,
+    p.name AS name,
+    p.description AS description,
+    p.price AS price,
+    p.rating AS rating,
+    p.image AS image
+  ORDER BY p.name
+  LIMIT $limit
+`;
+
 export const GET_PRODUCT_BY_ID_QUERY = `
   MATCH (p:Product {id: $productId})
   RETURN
