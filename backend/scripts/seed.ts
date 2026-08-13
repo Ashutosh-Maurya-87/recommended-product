@@ -521,10 +521,137 @@ const purchaseGroups = [
 // HELPER FUNCTIONS
 // -----------------------------------------------------
 
+// function getImageUrl(productId: string): string {
+//   return `https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80&auto=format&fit=crop`;
+// }
 function getImageUrl(productId: string): string {
-  return `https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80&auto=format&fit=crop`;
-}
+  const images: Record<string, string> = {
+    P001:
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=800&q=80&auto=format&fit=crop", // Wireless Headphones
 
+    P002:
+      "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=800&q=80&auto=format&fit=crop", // Bluetooth Earbuds
+
+    P003:
+      "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=800&q=80&auto=format&fit=crop", // Portable Bluetooth Speaker
+
+    P004:
+      "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=800&q=80&auto=format&fit=crop", // Noise Cancelling Headphones
+
+    P005:
+      "https://images.unsplash.com/photo-1545454675-3531b543be5d?w=800&q=80&auto=format&fit=crop", // USB Desktop Speaker
+
+    P006:
+      "https://images.unsplash.com/photo-1599669454699-248893623440?w=800&q=80&auto=format&fit=crop", // Gaming Headset
+
+    P007:
+      "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80&auto=format&fit=crop", // Wireless Mouse
+
+    P008:
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80&auto=format&fit=crop", // Mechanical Keyboard
+
+    P009:
+      "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=800&q=80&auto=format&fit=crop", // Laptop Stand
+
+    P010:
+      "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=800&q=80&auto=format&fit=crop", // USB-C Hub
+
+    P011:
+      "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=800&q=80&auto=format&fit=crop", // HD Webcam
+
+    P012:
+      "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=800&q=80&auto=format&fit=crop", // Wireless Keyboard
+
+    P013:
+      "https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=800&q=80&auto=format&fit=crop", // Ergonomic Mouse
+
+    P014:
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=800&q=80&auto=format&fit=crop", // Laptop Cooling Pad
+
+    P015:
+      "https://images.unsplash.com/photo-1583863788434-e58a36330cf0?w=800&q=80&auto=format&fit=crop", // Fast Charger
+
+    P016:
+      "https://images.unsplash.com/photo-1609592424920-5f8c5a1f7a4c?w=800&q=80&auto=format&fit=crop", // Power Bank
+
+    P017:
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&auto=format&fit=crop", // USB-C Cable
+
+    P018:
+      "https://images.unsplash.com/photo-1591290619762-c5889a2f0e6b?w=800&q=80&auto=format&fit=crop", // Wireless Charger
+
+    P019:
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800&q=80&auto=format&fit=crop", // Phone Stand
+
+    P020:
+      "https://images.unsplash.com/photo-1601524909162-ae8725290836?w=800&q=80&auto=format&fit=crop", // Car Phone Mount
+
+    P021:
+      "https://images.unsplash.com/photo-1550985543-f47f50c7f4c4?w=800&q=80&auto=format&fit=crop", // Smart LED Bulb
+
+    P022:
+      "https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800&q=80&auto=format&fit=crop", // Smart Plug
+
+    P023:
+      "https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800&q=80&auto=format&fit=crop", // Smart Door Sensor
+
+    P024:
+      "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=800&q=80&auto=format&fit=crop", // Security Camera
+
+    P025:
+      "https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&q=80&auto=format&fit=crop", // LED Light Strip
+
+    P026:
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=800&q=80&auto=format&fit=crop", // Smart Watch
+
+    P027:
+      "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?w=800&q=80&auto=format&fit=crop", // Fitness Band
+
+    P028:
+      "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800&q=80&auto=format&fit=crop", // Smart Ring
+
+    P029:
+      "https://images.unsplash.com/photo-1544117519-31a4b719223d?w=800&q=80&auto=format&fit=crop", // Sports GPS Watch
+
+    P030:
+      "https://images.unsplash.com/photo-1527814050087-3793815479db?w=800&q=80&auto=format&fit=crop", // Gaming Mouse
+
+    P031:
+      "https://images.unsplash.com/photo-1595225476474-87563907a212?w=800&q=80&auto=format&fit=crop", // RGB Gaming Keyboard
+
+    P032:
+      "https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?w=800&q=80&auto=format&fit=crop", // Gaming Controller
+
+    P033:
+      "https://images.unsplash.com/photo-1616588589676-62b3bd4ff6d2?w=800&q=80&auto=format&fit=crop", // RGB Mouse Pad
+
+    P034:
+      "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=800&q=80&auto=format&fit=crop", // Desk Lamp
+
+    P035:
+      "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=800&q=80&auto=format&fit=crop", // Desk Organizer
+
+    P036:
+      "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&q=80&auto=format&fit=crop", // Monitor Stand
+
+    P037:
+      "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&q=80&auto=format&fit=crop", // Portable SSD
+
+    P038:
+      "https://images.unsplash.com/photo-1624823183493-ed5832f48f18?w=800&q=80&auto=format&fit=crop", // USB Flash Drive
+
+    P039:
+      "https://images.unsplash.com/photo-1591871937573-74dbba515c7c?w=800&q=80&auto=format&fit=crop", // MicroSD Card
+
+    P040:
+      "https://images.unsplash.com/photo-1531492746076-161ca9b5d44f?w=800&q=80&auto=format&fit=crop", // External Hard Drive
+  };
+
+  return (
+    images[productId] ||
+    "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=800&q=80&auto=format&fit=crop"
+  );
+}
 // -----------------------------------------------------
 // SEED
 // -----------------------------------------------------
