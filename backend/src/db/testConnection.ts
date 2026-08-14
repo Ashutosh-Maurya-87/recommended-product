@@ -5,15 +5,20 @@ export async function testDatabaseConnection() {
 
   try {
     const result = await session.run(`
-      RETURN 
-        "CognoDB connection successful" AS message,
-        datetime() AS serverTime
-    `);
+            RETURN
+                "CognoDB connection successful" AS message,
+                datetime() AS serverTime
+        `);
 
     const record = result.records[0];
 
     console.log(record.get("message"));
-    console.log("Database time:", record.get("serverTime").toString());
+    console.log(
+      "Database time:",
+      record.get("serverTime").toString()
+    );
+
+    return true;
   } finally {
     await session.close();
   }
